@@ -36,14 +36,22 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 
 /* ─── Photo Section ─── */
 const PhotoSection = ({ index }: { index: number }) => (
-  <div className="photo-section scroll-reveal">
-    <img
-      src={`/placeholder.svg`}
-      alt={`Foto ${index} de Vicky`}
-      className="bg-champagne"
-      style={{ objectFit: "cover" }}
-    />
-    {/* Reemplazar src con la foto real, ej: src="/foto1.jpg" */}
+  <div className="photo-section scroll-reveal bg-champagne flex items-center justify-center">
+    {/* Para agregar una foto real: 
+        1. Subí la imagen a public/ (ej: public/foto1.jpg)
+        2. Descomentá la línea <img> y cambiá el src
+        <img src="/foto1.jpg" alt={`Foto ${index} de Vicky`} className="w-full h-full object-cover" />
+    */}
+    <div className="text-center opacity-30">
+      <div className="w-16 h-16 mx-auto mb-3 rounded-full border border-primary/20 flex items-center justify-center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="text-primary/40">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <path d="m21 15-5-5L5 21" />
+        </svg>
+      </div>
+      <p className="text-xs tracking-widest uppercase text-muted-foreground/50 font-body">Foto {index}</p>
+    </div>
   </div>
 );
 
