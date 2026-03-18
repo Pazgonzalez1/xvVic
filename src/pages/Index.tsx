@@ -235,38 +235,45 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
     <MusicPlayer />
-      {/* ═══ PORTADA ═══ */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
+{/* ═══ PORTADA ═══ */}
+<section className="relative min-h-screen flex flex-col items-center justify-start pt-20 px-6 text-center overflow-hidden">
 
-        {/* IMAGEN DE FONDO */}
-        <img
-          src="/portada.webp" // ← poné acá la foto de Vicky en /public
-          alt="Vicky"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+  {/* IMAGEN DE FONDO */}
+  <img
+    src="/portada.webp" 
+    alt="Vicky"
+    className="absolute inset-0 w-full h-full object-cover object-center"
+  />
 
-        {/* OVERLAY para opacidad */}
-<div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/40" />
-        <div className="scroll-reveal relative z-10">
-<p className="text-xs uppercase tracking-[0.4em] text-gray-200 drop-shadow-md font-body mb-8">
-  Te invito a celebrar
-</p>
+  {/* OVERLAY: He invertido el degradado para que la parte de arriba sea más oscura y el texto resalte, 
+      dejando la cara de Vicky (en el centro/abajo) más clara */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/20 to-transparent" />
 
-<DecoLine />
+  <div className="scroll-reveal relative z-10">
+    <p className="text-xs uppercase tracking-[0.4em] text-gray-200 drop-shadow-md font-body mb-4">
+      Te invito a celebrar
+    </p>
 
-<h1 className="text-5xl md:text-7xl font-display font-light text-white drop-shadow-md mt-6 leading-tight">
-  Mis XV
-</h1>
+    <div className="flex justify-center">
+        <DecoLine />
+    </div>
 
-<p className="text-6xl md:text-8xl font-display italic text-[#d4af37] mt-2">
-  Vicky
-</p>
+    <h1 className="text-5xl md:text-7xl font-display font-light text-white drop-shadow-md mt-4 leading-tight">
+      Mis XV
+    </h1>
 
-<DecoLine />
+    {/* El color de Vicky se mantiene intacto como pediste */}
+    <p className="text-6xl md:text-8xl font-display italic text-[#d4af37] mt-2">
+      Vicky
+    </p>
 
-<p className="text-sm uppercase tracking-[0.3em] text-gray-200 drop-shadow-md font-body mt-8">
-  25 de abril de 2026
-</p>
+    <div className="flex justify-center">
+        <DecoLine />
+    </div>
+
+    <p className="text-sm uppercase tracking-[0.3em] text-gray-200 drop-shadow-md font-body mt-6">
+      25 de abril de 2026
+    </p>
         </div>
       </section>
 {/* ═══ FRASE EMOTIVA ═══ */}
