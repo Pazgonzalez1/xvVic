@@ -335,7 +335,7 @@ const Index = () => {
 
         <div>
           <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground font-body">Horario</p>
-          <p className="text-lg font-display text-foreground mt-1">21:00 hs a 04:00 hs</p>
+          <p className="text-lg font-display text-foreground mt-1">20:30 hs a 04:00 hs</p>
         </div>
 
         <div className="deco-line mx-auto" style={{ width: "30px" }} />
