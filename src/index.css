@@ -144,6 +144,9 @@
     transform: scale(1);
   }
 }
+.star-fluid {
+  opacity: 0.7;
+}
 
 @keyframes gentle-pulse {
   0%, 100% {
@@ -153,6 +156,16 @@
     opacity: 1;
   }
 }
+.text-glow-soft {
+  text-shadow:
+    0 0 8px rgba(232,30,98,0.4),
+    0 0 18px rgba(232,30,98,0.25),
+    0 0 30px rgba(232,30,98,0.15);
+}
 
 /* En tu archivo .css global */
 
+.text-elegant {
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
