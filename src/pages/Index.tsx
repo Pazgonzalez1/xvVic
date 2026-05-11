@@ -1,6 +1,200 @@
   import { useEffect, useState, useRef, useCallback } from "react";
   import { useMemo } from "react";
+const ConfirmationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const [hasFamily, setHasFamily] = useState(false);
+  const [companionCount, setCompanionCount] = useState(1);
+  const [companions, setCompanions] = useState([{ nombre: "", apellido: "" }]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setHasFamily(false);
+        setCompanionCount(1);
+        setCompanions([{ nombre: "", apellido: "" }]);
+      }, 300);
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleCountChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const count = parseInt(e.target.value);
+    setCompanionCount(count);
+    
+    setCompanions(prev => {
+      const newArr = [...prev];
+      if (count > prev.length) {
+        for (let i = prev.length; i < count; i++) {
+          newArr.push({ nombre: "", apellido: "" });
+        }
+      } else {
+        newArr.splice(count);
+      }
+      return newArr;
+    });
+  };
+
+  const handleCompanionChange = (index: number, field: "nombre" | "apellido", value: string) => {
+    const newCompanions = [...companions];
+    newCompanions[index][field] = value;
+    setCompanions(newCompanions);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const actionUrl = form.action;
+
+    const mainNombre = form.querySelector<HTMLInputElement>('input[name="entry.922961004"]')?.value || "";
+    const mainApellido = form.querySelector<HTMLInputElement>('input[name="entry.1397999760"]')?.value || "";
+    const mainEmail = form.querySelector<HTMLInputElement>('input[name="entry.1737060455"]')?.value || "";
+    const mainTelefono = form.querySelector<HTMLInputElement>('input[name="entry.1964299961"]')?.value || "";
+
+    try {
+      // 1. Enviamos el titular
+      const formDataTitular = new FormData();
+      formDataTitular.append("entry.922961004", mainNombre);
+      formDataTitular.append("entry.1397999760", mainApellido);
+      formDataTitular.append("entry.1737060455", mainEmail);
+      formDataTitular.append("entry.1964299961", mainTelefono);
+
+      await fetch(actionUrl, { method: 'POST', body: formDataTitular, mode: 'no-cors' });
+      
+      // 2. Enviamos a los acompañantes
+      if (hasFamily) {
+        for (const companion of companions) {
+          if (companion.nombre.trim() !== "" || companion.apellido.trim() !== "") {
+            const formDataCompanion = new FormData();
+            formDataCompanion.append("entry.922961004", companion.nombre);
+            formDataCompanion.append("entry.1397999760", companion.apellido);
+            formDataCompanion.append("entry.1737060455", `Acompañante de ${mainNombre} ${mainApellido}`);
+            formDataCompanion.append("entry.1964299961", mainTelefono); 
+            
+            await fetch(actionUrl, { method: 'POST', body: formDataCompanion, mode: 'no-cors' });
+          }
+        }
+      }
+      
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      
+      setTimeout(() => {
+        onClose();
+      }, 3500);
+
+    } catch (error) {
+      console.error("Error al enviar el formulario", error);
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+      <div className="bg-white rounded-2xl p-8 max-w-sm w-full relative border-2 border-[#E81E62]/30 shadow-[0_0_30px_rgba(232,30,98,0.3)] max-h-[90vh] overflow-y-auto">
+        <button onClick={onClose} className="absolute top-4 right-4 text-black/40 hover:text-[#E81E62] transition-colors text-3xl">✕</button>
+        
+        {isSubmitted ? (
+          <div className="text-center py-6 transition-opacity duration-500">
+            <div className="w-16 h-16 bg-[#E81E62]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-[#E81E62]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h3 className="text-4xl font-display text-[#E81E62] mb-2">¡Gracias!</h3>
+            <p className="text-xl text-gray-600 font-body">Gracias por confirmar tu asistencia.</p>
+          </div>
+        ) : (
+          <>
+            <h3 className="text-4xl font-display text-[#E81E62] mb-2 text-center">Asistiré</h3>
+            <p className="text-base text-center text-gray-500 mb-6 uppercase tracking-widest font-body">Por favor completa tus datos</p>
+            
+            <form 
+              action="https://docs.google.com/forms/d/1rDrucdR_DIgcldOQt9oVG_Hr1iA4JCnOPh270_bYYc4/formResponse"
+              onSubmit={handleSubmit}
+              className="space-y-4"
+            >
+              <input name="entry.922961004" type="text" placeholder="Tu Nombre" required className="w-full p-4 text-xl font-medium bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#E81E62] text-black" />
+              <input name="entry.1397999760" type="text" placeholder="Tu Apellido" required className="w-full p-4 text-xl font-medium bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#E81E62] text-black" />
+              <input name="entry.1737060455" type="email" placeholder="Tu Email" required className="w-full p-4 text-xl font-medium bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#E81E62] text-black" />
+              <input name="entry.1964299961" type="tel" placeholder="Tu Teléfono" required className="w-full p-4 text-xl font-medium bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-[#E81E62] text-black" />
+
+              <div className="flex items-center gap-4 py-2 border-t border-gray-200 mt-6 pt-6">
+                <input 
+                  type="checkbox" 
+                  id="hasFamily"
+                  checked={hasFamily}
+                  onChange={(e) => setHasFamily(e.target.checked)}
+                  className="w-8 h-8 accent-[#E81E62] rounded cursor-pointer shrink-0"
+                />
+                <label htmlFor="hasFamily" className="text-gray-800 font-body text-xl cursor-pointer select-none font-semibold leading-tight">
+                  Asistiré con grupo familiar
+                </label>
+              </div>
+
+              {hasFamily && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300 space-y-4 p-5 bg-[#E81E62]/5 border border-[#E81E62]/20 rounded-xl mt-4">
+                  
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-base font-bold text-[#E81E62] uppercase tracking-widest">¿Cuántos son?</span>
+                    <select 
+                      value={companionCount} 
+                      onChange={handleCountChange}
+                      className="p-3 px-6 text-xl font-bold bg-white border border-[#E81E62]/30 rounded-xl focus:outline-none focus:border-[#E81E62] text-black shadow-sm"
+                    >
+                      {[1, 2, 3, 4, 5, 6].map(num => (
+                        <option key={num} value={num}>{num}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="space-y-4 pt-2 border-t border-[#E81E62]/10">
+                    {companions.map((companion, index) => (
+                      <div key={index} className="flex gap-3">
+                        <input 
+                          type="text"
+                          placeholder={`Nombre ${index + 1}`}
+                          required={hasFamily}
+                          value={companion.nombre}
+                          onChange={(e) => handleCompanionChange(index, "nombre", e.target.value)}
+                          className="w-1/2 p-4 text-xl font-medium bg-white border border-[#E81E62]/20 rounded-xl focus:outline-none focus:border-[#E81E62] focus:ring-2 focus:ring-[#E81E62]/20 text-black placeholder:text-gray-400 placeholder:font-normal shadow-sm"
+                        />
+                        <input 
+                          type="text"
+                          placeholder={`Apellido ${index + 1}`}
+                          required={hasFamily}
+                          value={companion.apellido}
+                          onChange={(e) => handleCompanionChange(index, "apellido", e.target.value)}
+                          className="w-1/2 p-4 text-xl font-medium bg-white border border-[#E81E62]/20 rounded-xl focus:outline-none focus:border-[#E81E62] focus:ring-2 focus:ring-[#E81E62]/20 text-black placeholder:text-gray-400 placeholder:font-normal shadow-sm"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
+              )}
+              
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className={`w-full py-5 mt-6 text-2xl rounded-xl font-bold tracking-[0.2em] transition-all shadow-xl text-white ${
+                  isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-[#E81E62] hover:bg-[#c21851] active:scale-95"
+                }`}
+              >
+                {isSubmitting ? "ENVIANDO..." : "CONFIRMAR"}
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
   const Sparkles = ({ count = 4 }: { count?: number }) => {
     const particles = useMemo(() => {
       return Array.from({ length: count }, (_, i) => ({
@@ -165,10 +359,13 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 
     // EDITABLE: Cambiar estos links
     const googleMapsLink = "https://www.google.com/maps/place/Espacio+Mu%C3%B1iz/@-33.0940855,-64.3082128,17z/data=!4m6!3m5!1s0x95cdffa6d142114d:0x36b081ce084d3897!8m2!3d-33.0940855!4d-64.3082128!16s%2Fg%2F11c56r4cpv?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"; // ← Pegar link de Google Maps
-    const whatsappLink = "https://wa.me/5493586540512?text=Holaaa, %20Confirmo%20asistencia%20a%20los%20XV%20de%20Angelina"; // ← Editar número y mensaje
-
+// Estado para controlar si el formulario está abierto o cerrado
+    const [isModalOpen, setIsModalOpen] = useState(false);
     return (
       <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* MODAL DE CONFIRMACIÓN (Invisible hasta que se haga clic) */}
+        <ConfirmationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          
         
 {/* ═══ PORTADA ═══ */}
 <section
@@ -381,17 +578,16 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
       <DecoLine />
     </div>
 
-  {/* BOTÓN CONFIRMAR */}
+{/* BOTÓN CONFIRMAR */}
 <div className="flex flex-col items-center text-center">
 
   <p className="text-2xl font-semibold text-[#E81E62] mt-6 tracking-wide">
     Hacé click para confirmar
   </p>
 
-  <a
-    href={whatsappLink}
-    target="_blank"
-    rel="noopener noreferrer"
+  {/* CAMBIO: Quitamos el <a> y ponemos este <button> */}
+  <button
+    onClick={() => setIsModalOpen(true)}
     className="
       mt-3 px-8 py-3 
       rounded-xl
@@ -404,26 +600,19 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     "
   >
     Confirmar asistencia
-  </a>
+  </button>
 
   <p className="text-xl text-[#E81E62] mt-5 tracking-wide">
     Confirmar asistencia hasta el 10 de julio
   </p>
-    <div className="relative flex justify-center py-5 overflow-hidden">
-  <img
-    src="/divisionbarGrande.png"
-    alt=""
-className="
-  w-[400px]
-  md:w-[850px]
-  max-w-none
-  opacity-90
-  pointer-events-none
-  select-none
-  drop-shadow-[0_6px_18px_rgba(232,30,98,0.08)]
-"
-  />
-</div>
+
+  <div className="relative flex justify-center py-5 overflow-hidden">
+    <img
+      src="/divisionbarGrande.png"
+      alt=""
+      className="w-[400px] md:w-[850px] max-w-none opacity-90 pointer-events-none select-none drop-shadow-[0_6px_18px_rgba(232,30,98,0.08)]"
+    />
+  </div>
 </div>
   </div>
 
@@ -465,7 +654,7 @@ className="
             </div>
         </section>
                       <DecoLine />
-
+<ConfirmationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       </div>
       
     );
