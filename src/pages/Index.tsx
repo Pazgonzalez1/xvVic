@@ -287,7 +287,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
         style={{
           position: "absolute",
           inset: 0,
-          background: "#E81E62",
+          background: "#d48b96",
           filter: "blur(6px)",
           opacity: 0.4,
         }}
