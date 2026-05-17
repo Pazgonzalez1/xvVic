@@ -420,10 +420,10 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     Mis XV
   </h1>
 
-  <p className="relative text-6xl md:text-8xl font-display italic text-[#E81E62] mt-2">
+  <p className="relative text-6xl md:text-8xl font-display italic text-[#ff8fab] mt-2">
     <span className="relative z-10">Angelina</span>
 
-    <span className="absolute inset-0 text-[#E81E62] blur-[8px] opacity-40 scale-105">
+    <span className="absolute inset-0 text-[#e56399] blur-[8px] opacity-60 scale-105">
       Angelina
     </span>
   </p>
@@ -581,7 +581,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 {/* BOTÓN CONFIRMAR */}
 <div className="flex flex-col items-center text-center">
 
-  <p className="text-2xl font-semibold text-[#E81E62] mt-6 tracking-wide">
+  <p className="text-2xl font-semibold text-[#e27396] mt-6 tracking-wide">
     Hacé click para confirmar
   </p>
 
@@ -591,7 +591,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     className="
       mt-3 px-8 py-3 
       rounded-xl
-      border-2 border-[#E81E62] bg-[#E81E62]/5 
+      border-2 border-[#ffafcc] bg-[#ffafcc]/5 
       text-[#E81E62]
       text-base uppercase tracking-[0.15em] font-semibold
       transition-all duration-300
@@ -602,7 +602,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     Confirmar asistencia
   </button>
 
-  <p className="text-xl text-[#E81E62] mt-5 tracking-wide">
+  <p className="text-xl text-[#ff90b3] mt-5 tracking-wide">
     Confirmar asistencia hasta el 10 de julio
   </p>
 
@@ -616,34 +616,16 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 </div>
   </div>
 
-</section>
-              {/* SEPARACIÓN Y DECOLINE */}
-            <div className="py-">
-              <DecoLine />
-            </div>
-        {/* ═══ REGALO ═══ */}
-        <section className="relative py-10 px-8 text-center overflow-hidden">
-          <Sparkles count={5} />
-          <div className="scroll-reveal max-w-sm mx-auto">
-   
-            <p className="text-2xl md:text-2xl font-body italic text-foreground leading-relaxed mt-8 mb-6"> 
-              Mi mejor regalo es tu presencia, pero si deseas hacerme un presente podés depositar dinero en este alias:
-            </p>
-            <div className="py-4 px-8 border border-[#E81E62]/25 rounded-sm bg-background/40 backdrop-blur-sm inline-block">
-              <p className="text-xl font-display tracking-widest text-[#E81E62]">ange.vaschetto</p>
-              <p className="text-xl font-body text-[#E81E62]/70 mt-2">Angelina Vaschetto</p>
-            </div>
-          </div>
         </section>
               <div className="py-5">
               <DecoLine />
             </div>
         {/* ═══ CIERRE + MÚSICA ═══ */}
-        <section className="relative py-24 px-8 text-center overflow-hidden">
+        <section className="relative py-20 px-8 text-center overflow-hidden">
           <Sparkles count={13} />
           <div className="scroll-reveal">
 
-            <p className="text-3xl font-display italic text-[#E81E62] mt-10 mb-4">
+            <p className="text-3xl font-display italic text-[#da627d] mt-10 mb-4">
               Angelina
             </p>
 
