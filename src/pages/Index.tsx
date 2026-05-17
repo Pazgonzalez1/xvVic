@@ -420,10 +420,10 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     Mis XV
   </h1>
 
-  <p className="relative text-6xl md:text-8xl font-display italic text-[#ff8fab] mt-2">
+  <p className="relative text-6xl md:text-8xl font-display italic text-[#f4acb7] mt-2">
     <span className="relative z-10">Angelina</span>
 
-    <span className="absolute inset-0 text-[#e56399] blur-[8px] opacity-60 scale-105">
+    <span className="absolute inset-0 text-[#e56399] blur-[8px] opacity-40 scale-105">
       Angelina
     </span>
   </p>
