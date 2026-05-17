@@ -111,7 +111,7 @@ const ConfirmationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
           </div>
         ) : (
           <>
-            <h3 className="text-4xl font-display text-[#E81E62] mb-2 text-center">Asistiré</h3>
+            <h3 className="text-4xl font-display text-[#f4acb7] mb-2 text-center">Asistiré</h3>
             <p className="text-base text-center text-gray-500 mb-6 uppercase tracking-widest font-body">Por favor completa tus datos</p>
             
             <form 
@@ -183,7 +183,7 @@ const ConfirmationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
                 type="submit"
                 disabled={isSubmitting}
                 className={`w-full py-5 mt-6 text-2xl rounded-xl font-bold tracking-[0.2em] transition-all shadow-xl text-white ${
-                  isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-[#E81E62] hover:bg-[#c21851] active:scale-95"
+                  isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-[#f4acb7] hover:bg-[#c21851] active:scale-95"
                 }`}
               >
                 {isSubmitting ? "ENVIANDO..." : "CONFIRMAR"}
