@@ -342,7 +342,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
   /* ─── Countdown Box ─── */
   const CountdownBox = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center">
-      <div className="w-16 h-16 border border-[#e796a2]/90 rounded-sm flex items-center justify-center bg-background/40 backdrop-blur-sm">
+      <div className="w-16 h-16 border border-[#ffb3c6]/90 rounded-sm flex items-center justify-center bg-background/40 backdrop-blur-sm">
         <span className="text-2xl font-display text-foreground">{String(value).padStart(2, "0")}</span>
       </div>
       <span className="text-xs uppercase tracking-[0.2em] text-black mt-2 font-body font-semibold">
