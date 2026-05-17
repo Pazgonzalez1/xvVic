@@ -581,7 +581,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 {/* BOTÓN CONFIRMAR */}
 <div className="flex flex-col items-center text-center">
 
-  <p className="text-2xl font-semibold text-[#f8ad9d] mt-6 tracking-wide">
+  <p className="text-2xl font-semibold text-[#f4acb7] mt-6 tracking-wide">
     Hacé click para confirmar
   </p>
 
@@ -591,8 +591,8 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     className="
       mt-3 px-8 py-3 
       rounded-xl
-      border-2 border-[#f8ad9d] bg-[#ffafcc]/5 
-      text-[#ff8fab]
+      border-2 border-[#f4acb7] bg-[#ffafcc]/5 
+      text-[#f4acb7]
       text-base uppercase tracking-[0.15em] font-semibold
       transition-all duration-300
       hover:bg-[#E81E62] hover:text-white 
@@ -602,7 +602,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     Confirmar asistencia
   </button>
 
-  <p className="text-xl text-[#f8ad9d] mt-5 tracking-wide">
+  <p className="text-xl text-[#f4acb7] mt-5 tracking-wide">
     Confirmar asistencia hasta el 10 de julio
   </p>
 
