@@ -279,7 +279,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
       style={{
         width: wide ? "120px" : "60px",
         height: "1px",
-        background: "linear-gradient(to right, transparent, #E81E62, transparent)",
+        background: "linear-gradient(to right, transparent, #e796a2, transparent)",
       }}
     >
       {/* Glow suave */}
@@ -287,7 +287,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
         style={{
           position: "absolute",
           inset: 0,
-          background: "#d48b96",
+          background: "#f4acb7",
           filter: "blur(6px)",
           opacity: 0.4,
         }}
@@ -342,7 +342,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
   /* ─── Countdown Box ─── */
   const CountdownBox = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center">
-      <div className="w-16 h-16 border border-[#f4acb7]/90 rounded-sm flex items-center justify-center bg-background/40 backdrop-blur-sm">
+      <div className="w-16 h-16 border border-[#e796a2]/90 rounded-sm flex items-center justify-center bg-background/40 backdrop-blur-sm">
         <span className="text-2xl font-display text-foreground">{String(value).padStart(2, "0")}</span>
       </div>
       <span className="text-xs uppercase tracking-[0.2em] text-black mt-2 font-body font-semibold">
