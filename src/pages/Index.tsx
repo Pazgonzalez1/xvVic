@@ -240,7 +240,7 @@ const ConfirmationModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
           
           /* Forzamos las líneas decorativas a rosa en caso de que tengan estilos CSS externos */
           .deco-line, .deco-line-wide {
-            background-color: #E81E62 !important;
+            background-color: #e56399 !important;
             border-color: #E81E62 !important;
           }
         `}</style>
@@ -581,7 +581,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 {/* BOTÓN CONFIRMAR */}
 <div className="flex flex-col items-center text-center">
 
-  <p className="text-2xl font-semibold text-[#e27396] mt-6 tracking-wide">
+  <p className="text-2xl font-semibold text-[#f8ad9d] mt-6 tracking-wide">
     Hacé click para confirmar
   </p>
 
@@ -591,8 +591,8 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     className="
       mt-3 px-8 py-3 
       rounded-xl
-      border-2 border-[#ffafcc] bg-[#ffafcc]/5 
-      text-[#E81E62]
+      border-2 border-[#f8ad9d] bg-[#ffafcc]/5 
+      text-[#ff8fab]
       text-base uppercase tracking-[0.15em] font-semibold
       transition-all duration-300
       hover:bg-[#E81E62] hover:text-white 
@@ -602,7 +602,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     Confirmar asistencia
   </button>
 
-  <p className="text-xl text-[#ff90b3] mt-5 tracking-wide">
+  <p className="text-xl text-[#f8ad9d] mt-5 tracking-wide">
     Confirmar asistencia hasta el 10 de julio
   </p>
 
@@ -625,7 +625,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
           <Sparkles count={13} />
           <div className="scroll-reveal">
 
-            <p className="text-3xl font-display italic text-[#da627d] mt-10 mb-4">
+            <p className="text-3xl font-display italic text-[#f4acb7] mt-10 mb-4">
               Angelina
             </p>
 
