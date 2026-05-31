@@ -572,7 +572,46 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 
   </div>
 </div>
+    {/* SEPARACIÓN */}
+    <div className="py-8">
+      <DecoLine />
+    </div>
 
+{/* ═══ PRECIOS ═══ */}
+<div className="scroll-reveal max-w-md mx-auto mt-4 mb-10">
+  <div className="relative bg-white/30 backdrop-blur-xl border border-[#E81E62]/20 rounded-2xl p-8 shadow-[0_10px_40px_rgba(232,30,98,0.12)]">
+    <p className="text-base uppercase tracking-[0.25em] text-black/80 font-body font-semibold mb-8">
+      Valor tarjeta
+    </p>
+
+    <div className="space-y-4 text-left">
+      <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
+        <span className="text-xl font-body text-foreground">Mayores</span>
+        <span className="text-xl font-display text-[#E81E62]">$110.000</span>
+      </div>
+
+      <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
+        <span className="text-xl font-body text-foreground">De 5 a 12 años</span>
+        <span className="text-xl font-display text-[#E81E62]">$50.000</span>
+      </div>
+
+      <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
+        <span className="text-xl font-body text-foreground">Juvenil</span>
+        <span className="text-xl font-display text-[#E81E62]">$50.000</span>
+      </div>
+
+      <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
+        <span className="text-xl font-body text-foreground">Brindis</span>
+        <span className="text-xl font-display text-[#E81E62]">$25.000</span>
+      </div>
+
+      <div className="flex justify-between items-center gap-4">
+        <span className="text-xl font-body text-foreground">Brindis mayores de 18</span>
+        <span className="text-xl font-display text-[#E81E62]">$60.000</span>
+      </div>
+    </div>
+  </div>
+</div>
     {/* SEPARACIÓN */}
     <div className="py-8">
       <DecoLine />
