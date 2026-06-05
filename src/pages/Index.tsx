@@ -600,14 +600,6 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
         <span className="text-xl font-display text-[#E81E62]">$50.000</span>
       </div>
 
-      <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
-        <span className="text-xl font-body text-foreground">Brindis</span>
-        <span className="text-xl font-display text-[#E81E62]">$25.000</span>
-      </div>
-
-      <div className="flex justify-between items-center gap-4">
-        <span className="text-xl font-body text-foreground">Brindis mayores de 18</span>
-        <span className="text-xl font-display text-[#E81E62]">$60.000</span>
       </div>
     </div>
   </div>
