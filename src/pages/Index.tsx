@@ -600,7 +600,6 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
         <span className="text-xl font-display text-[#E81E62]">$50.000</span>
       </div>
 
-      </div>
     </div>
   </div>
 </div>
