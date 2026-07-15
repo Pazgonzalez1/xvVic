@@ -353,7 +353,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 
   /* ─── Main Page ─── */
   const Index = () => {
-    const eventDate = new Date("2026-07-25T20:00:00");
+    const eventDate = new Date("2026-08-22T20:00:00");
     const timeLeft = useCountdown(eventDate);
     useScrollReveal();
 
@@ -434,7 +434,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
     className="text-sm uppercase tracking-[0.3em] text-black font-body mt-6"
     style={{ textShadow: "0 1px 2px rgba(255,255,255,0.6)" }}
   >
-    25 de julio de 2026
+    22 de agosto de 2026
   </p>
 </div>
   </div>
@@ -509,7 +509,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
               Fecha
             </p>
             <p className="text-2xl font-display text-foreground mt-2">
-              25 de Julio de 2026
+              22 de Agosto de 2026
             </p>
           </div>
 
@@ -592,12 +592,12 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
 
       <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
         <span className="text-xl font-body text-foreground">De 5 a 12 años</span>
-        <span className="text-xl font-display text-[#E81E62]">$50.000</span>
+        <span className="text-xl font-display text-[#E81E62]">$55.000</span>
       </div>
 
       <div className="flex justify-between items-center gap-4 border-b border-[#E81E62]/10 pb-3">
         <span className="text-xl font-body text-foreground">Juvenil</span>
-        <span className="text-xl font-display text-[#E81E62]">$50.000</span>
+        <span className="text-xl font-display text-[#E81E62]">$55.000</span>
       </div>
 
     </div>
@@ -633,7 +633,7 @@ const DecoLine = ({ wide = false }: { wide?: boolean }) => (
   </button>
 
   <p className="text-xl text-[#f4acb7] mt-5 tracking-wide">
-    Confirmar asistencia hasta el 10 de julio
+    Confirmar asistencia hasta el 12 de Agosto
   </p>
 
   <div className="relative flex justify-center py-5 overflow-hidden">
